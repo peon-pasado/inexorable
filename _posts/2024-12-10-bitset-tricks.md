@@ -14,7 +14,7 @@ Bitset allows us to speed up bit operations, offering improvements of up to x32 
 
 ## Memory Tricks
 
-__Problem 1__: Given a DAG $G$ with $N$ ($1 \leq N \leq {10}^5$) nodes and $M$ ($1 \leq M \leq {10}^5$) edges, find, for each node, how many nodes can be reached through the edges in $G$.
+__Problem 1__: Given a DAG \\(G\\) with \\(N\\) (\\(1 \leq N \leq {10}^5\\)) nodes and \\(M\\) (\\(1 \leq M \leq {10}^5\\)) edges, find, for each node, how many nodes can be reached through the edges in \\(G\\).
 
 __Idea__: Use a bitset to determine all nodes reachable from each node. To update, simply follow the reverse order of the topological sort.
 
@@ -33,9 +33,9 @@ for (int i=0; i<n; ++i) {
 }
 ```
 
-This algorithm has a time complexity of $O(N^2 / B)$, and the same memory complexity.
+This algorithm has a time complexity of \\(O(N^2 / B)\\), and the same memory complexity.
 
-__Idea 2__: Memory can be optimized. Imagine we want to check if nodes in the range $\[i * B, (i + 1) * B\)$ are reachable. This can be done in $O(n + m)$.
+__Idea 2__: Memory can be optimized. Imagine we want to check if nodes in the range \\(\[i * B, (i + 1) * B\)\\) are reachable. This can be done in \\(O(n + m)\\).
 
 ```c++
 vector<int> cnt(n);
@@ -57,13 +57,13 @@ for (int i=0; i<n; ++i) {
 }
 ```
 
-Finally, we can see that the final time complexity remains the same, but the spatial complexity is $O(n + m)$.
+Finally, we can see that the final time complexity remains the same, but the spatial complexity is \\(O(n + m)\\).
 
 __Problem 2__ [#158. 【清华集训2015】静态仙人掌](https://uoj.ac/problem/158): In summary, we have a rooted cactus-tree where all cycles are odd, ensuring that both the shortest and longest paths between two nodes are unique. You are tasked with the following queries; initially, all nodes are black:
 
-1. Toggle the color of all nodes on the shortest path of $v$ from black to white and vice versa.
-2. Toggle the color of all nodes on the longest path of $v$ from black to white and vice versa.
-3. Count the number of black nodes in the sub cactus-tree of node $v$, defined as the maximal connected component containing $v$ after removing all edges in the shortest and longest paths.
+1. Toggle the color of all nodes on the shortest path of \\(v\\) from black to white and vice versa.
+2. Toggle the color of all nodes on the longest path of \\(v\\) from black to white and vice versa.
+3. Count the number of black nodes in the sub cactus-tree of node \\(v\\), defined as the maximal connected component containing \\(v\\) after removing all edges in the shortest and longest paths.
 
 __Idea__: The problem lies in the difficulty of grouping paths for these kinds of queries and maintaining subpaths. Therefore, a very useful idea is to maintain all paths in a bitset.
 
@@ -71,7 +71,7 @@ __Idea__: The problem lies in the difficulty of grouping paths for these kinds o
 - The longest path is more complex but can be categorized by the types of parent edges after running a BFS. Note that if we remove all edges connecting nodes of equal distance from the root, the result is a tree.
 
     - If the edge does not belong to any cycle: this is analogous to the shortest path case.
-    - If the parent edge was the first node discovered in the cycle: in this case, it is equal to the union of the parent’s longest path and the nodes of the cycle (there are only two nodes per cycle with this characteristic; the naive approach makes $3n$ changes).
+    - If the parent edge was the first node discovered in the cycle: in this case, it is equal to the union of the parent’s longest path and the nodes of the cycle (there are only two nodes per cycle with this characteristic; the naive approach makes \\(3n\\)changes).
     - In other cases, the longest path is equal to the parent’s longest path, but removing the parent node.
 
 Note that it is possible to construct the paths by following the BFS order.
@@ -104,9 +104,9 @@ for (auto u : bfs_order) {
 }
 ```
 
-The time complexity is $O(n^2 / B + 2m + qn/B)$, while the spatial complexity is $O(n^2/B)$.
+The time complexity is \\(O(n^2 / B + 2m + qn/B)\\), while the spatial complexity is \\(O(n^2/B)\\).
 
-__Idea 2__: We can improve spatial complexity. Since each operation reduces to 'copying' and 'assigning a position', the number of bits changed is at most $O(n + m)$. Therefore, if we maintain a persistent bitset, we can update and copy in $O(\log (n / B))$. Meanwhile, counting queries can be done in $O(n / B)$. Finally, the time complexity is $O((n + m) \log(n / B) + q (n / B))$, and the spatial complexity is $O((n + m) \log (n / B))$.
+__Idea 2__: We can improve spatial complexity. Since each operation reduces to 'copying' and 'assigning a position', the number of bits changed is at most \\(O(n + m)\\). Therefore, if we maintain a persistent bitset, we can update and copy in \\(O(\log (n / B))\\). Meanwhile, counting queries can be done in \\(O(n / B)\\). Finally, the time complexity is \\(O((n + m) \log(n / B) + q (n / B))\\), and the spatial complexity is \\(O((n + m) \log (n / B))\\).
 
 ```c++
 template<int N>
