@@ -88,16 +88,16 @@ for (auto u : bfs_order) {
         sp[u][lo[u]] = 1;
         lp[u][lo[u]] = 1;
     } else {
-        sp[u] = sp[p[u]];
+        sp[u] = sp[p[u]];    
         sp[u][lo[u]] = 1;
         lp[u] = lp[p[u]];
-        if (!in_cycle[u]) {
+        if (!in_cycle[u]) { //parent edge is not in a cycle
             lp[u][lo[u]] = 1;
-        } else if (semiroot[u]) {
+        } else if (semiroot[u]) { //parent edge is a cycle root 
             for (auto v : cycl_no[u]) {
                 lp[u][lo[v]] = 1;
             }
-        } else {
+        } else { //edge in cycle with parent is not the root.
             lp[u][lo[p[u]]] = 0;
         }
     }
