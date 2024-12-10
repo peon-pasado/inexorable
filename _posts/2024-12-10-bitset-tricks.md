@@ -71,7 +71,7 @@ __Idea__: The problem lies in the difficulty of grouping paths for these kinds o
 - The longest path is more complex but can be categorized by the types of parent edges after running a BFS. Note that if we remove all edges connecting nodes of equal distance from the root, the result is a tree.
 
     - If the edge does not belong to any cycle: this is analogous to the shortest path case.
-    - If the parent edge was the first node discovered in the cycle: in this case, it is equal to the union of the parent’s longest path and the nodes of the cycle (there are only two nodes per cycle with this characteristic; the naive approach makes \\(3n\\)changes).
+    - If the parent edge was the first node discovered in the cycle: in this case, it is equal to the union of the parent’s longest path and the nodes of the cycle (there are only two nodes per cycle with this characteristic; the naive approach makes \\(3n\\) changes).
     - In other cases, the longest path is equal to the parent’s longest path, but removing the parent node.
 
 Note that it is possible to construct the paths by following the BFS order.
