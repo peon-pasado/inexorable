@@ -106,7 +106,7 @@ for (auto u : bfs_order) {
 
 The time complexity is \\(O(n^2 / B + 2m + qn/B)\\), while the spatial complexity is \\(O(n^2/B)\\).
 
-__Idea 2__: We can improve spatial complexity. Since each operation reduces to 'copying' and 'assigning a position', the number of bits changed is at most \\(O(n + m)\\). Therefore, if we maintain a persistent bitset, we can update and copy in \\(O(\log (n / B))\\). Meanwhile, counting queries can be done in \\(O(n / B)\\). Finally, the time complexity is \\(O((n + m) \log(n / B) + q (n / B))\\), and the spatial complexity is \\(O((n + m) \log (n / B))\\).
+__Idea 2__: We can improve spatial complexity. Since each operation reduces to 'copy' and 'set in a position', the number of bits changed is at most \\(O(n + m)\\). Therefore, if we maintain a persistent bitset, we can update and copy in \\(O(\log (n / B))\\). Meanwhile, counting queries can be done in \\(O(n / B)\\). Finally, the time complexity is \\(O((n + m) \log(n / B) + q (n / B))\\), and the spatial complexity is \\(O((n + m) \log (n / B))\\).
 
 ```c++
 template<int N>
