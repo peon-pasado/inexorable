@@ -14,7 +14,7 @@ Bitset allows us to speed up bit operations, offering improvements of up to x32 
 
 ## Memory Tricks
 
-__Problem 1__: Given a DAG \(G\) with \(N\) (\(1 \leq N \leq {10}^5\)) nodes and \(M\) (\(1 \leq M \leq {10}^5\)) edges, find, for each node, how many nodes can be reached through the edges in \(G\).
+__Problem 1__: Given a DAG $G$ with $N$ ($1 \leq N \leq {10}^5$) nodes and $M$ ($1 \leq M \leq {10}^5$) edges, find, for each node, how many nodes can be reached through the edges in $G$.
 
 __Idea__: Use a bitset to determine all nodes reachable from each node. To update, simply follow the reverse order of the topological sort.
 
