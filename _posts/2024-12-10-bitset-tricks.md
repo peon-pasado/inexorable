@@ -35,7 +35,7 @@ for (int i=0; i<n; ++i) {
 
 This algorithm has a time complexity of \\(O(N^2 / B)\\), and the same memory complexity.
 
-__Idea 2__: Memory can be optimized. Imagine we want to check if nodes in the range \\(\[i * B, (i + 1) * B\)\\) are reachable. This can be done in \\(O(n + m)\\).
+__Idea 2__: Memory can be optimized. Imagine we want to check if nodes in the range \\(\[iB, (i + 1)B\)\\) are reachable. This can be done in \\(O(n + m)\\).
 
 ```c++
 vector<int> cnt(n);
@@ -45,11 +45,11 @@ for (int l = 0; l < n; l += B) {
     int r = min(n, l + B);
     for (int i=n-1; i>=0; --i) {
         int v = toposort[i];
-        cnct[v] = (l <= v && v < r) ? (1uLL << (v - l)) : 0;
+        cnct[v] = (l <= v && v < r) ? (1uLL << (v - l)) : 0; //check range
         for (int u : adj[v]) {
-            cnct[v] |= cnct[u];
+            cnct[v] |= cnct[u]; // O(1)
         }
-        cnt[v] += __builtin_popcountll(cnct[v]);
+        cnt[v] += __builtin_popcountll(cnct[v]); //count number of bits
     }
 }
 for (int i=0; i<n; ++i) {
