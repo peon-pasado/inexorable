@@ -39,6 +39,8 @@
         // Tagify does not fire a generic "change" event - listen to add/remove
         tagify.on('add', filterPosts);
         tagify.on('remove', filterPosts);
+        tagify.on('input', filterPosts);
+        tagify.on('dropdown:select', filterPosts);
       });
   });
 })(); 
