@@ -1,21 +1,38 @@
----
-layout: null
----
 {
   "posts": [
-    {%- for post in site.posts -%}
-      {
-        "title": {{ post.title | jsonify }},
-        "url": "{{ post.url | relative_url }}",
-        "tags": {{ post.tags | jsonify }},
-        "date": "{{ post.date | date_to_xmlschema }}"
-      }{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
+    {
+      "title": "Bitset tricks",
+      "url": "/inexorable/2024-12-10-bitset-tricks/",
+      "tags": [
+        "bitset",
+        "cactus-tree",
+        "tree"
+      ],
+      "date": "2024-12-10T00:00:00-05:00"
+    },
+    {
+      "title": "Sample blog post to learn markdown tips",
+      "url": "/inexorable/2020-02-28-sample-markdown/",
+      "tags": [
+        "test"
+      ],
+      "date": "2020-02-28T00:00:00-05:00"
+    },
+    {
+      "title": "Flake it till you make it",
+      "url": "/inexorable/2020-02-26-flake-it-till-you-make-it/",
+      "tags": [
+        "books",
+        "test"
+      ],
+      "date": "2020-02-26T00:00:00-05:00"
+    }
   ],
   "tags": [
-    {%- assign all_tags = site.tags | keys | sort -%}
-    {%- for tag in all_tags -%}
-      "{{ tag }}"{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
+    "bitset",
+    "books",
+    "cactus-tree",
+    "test",
+    "tree"
   ]
-} 
+}
