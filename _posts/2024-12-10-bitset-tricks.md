@@ -2,7 +2,7 @@
 layout: post
 title: Bitset tricks
 subtitle: competitive programming tricks
-tags: [tricks]
+tags: [bitset, cactus-tree, tree]
 comments: true
 mathjax: true
 author: Miguel Mini

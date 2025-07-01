@@ -1,0 +1,19 @@
+---
+layout: page
+title: "Buscar por tags"
+permalink: /tag-search/
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+
+<div class="my-3">
+  <input id="tag-search-input" class="form-control" placeholder="Selecciona tags…" autofocus>
+  <ul id="tag-search-results" class="mt-4 list-unstyled"></ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script>
+  // Provide the data URL to external script using a global var so we don't hardcode baseurl in JS file
+  window.TAG_SEARCH_DATA_URL = '{{ "/assets/data/tags_index.json" | relative_url }}';
+</script>
+<script src="{{ "/assets/js/tag-search.js" | relative_url }}"></script> 
